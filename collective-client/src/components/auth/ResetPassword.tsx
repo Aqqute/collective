@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, FormEvent } from 'react';
 import { ArrowLeft } from 'lucide-react';
 
-const ResetPasswordForm = ({ onSubmit, onBack }) => {
+interface ResetPasswordFormProps {
+  onSubmit: (email: string) => void;
+  onBack: () => void;
+}
+
+const ResetPasswordForm: React.FC<ResetPasswordFormProps> = ({ onSubmit, onBack }) => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    onSubmit?.(email);
+    onSubmit(email);
     // In a real app, you would handle the response from the server here
     setTimeout(() => setIsSubmitting(false), 1000);
   };
@@ -19,6 +24,7 @@ const ResetPasswordForm = ({ onSubmit, onBack }) => {
       <button 
         onClick={onBack}
         className="self-start flex items-center text-gray-600 mb-6 hover:text-gray-800"
+        type="button"
       >
         <ArrowLeft size={16} className="mr-1" />
         <span>Reset your password</span>

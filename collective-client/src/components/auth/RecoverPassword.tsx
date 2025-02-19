@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 
-const RecoverPasswordNotification = ({ email = "Janeth@gmail.com", onResend, onBack }) => {
+const RecoverPasswordNotification = ({ email = "Janeth@gmail.com", }) => {
+
+// const RecoverPasswordNotification = ({ email = "Janeth@gmail.com", onResend, onBack }) => {
   const [isResending, setIsResending] = useState(false);
   
   const handleResend = () => {
     setIsResending(true);
-    onResend?.();
+    // onResend?.();
     setTimeout(() => setIsResending(false), 2000);
   };
 
@@ -14,7 +16,7 @@ const RecoverPasswordNotification = ({ email = "Janeth@gmail.com", onResend, onB
     <div className="flex flex-col items-center max-w-md mx-auto p-6 bg-white rounded-lg shadow-sm">
       {/* Back button */}
       <button 
-        onClick={onBack}
+        // onClick={onBack}
         className="self-start flex items-center text-gray-600 mb-6 hover:text-gray-800"
       >
         <ArrowLeft size={16} className="mr-1" />
