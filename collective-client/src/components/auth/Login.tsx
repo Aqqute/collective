@@ -9,11 +9,12 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg">
+    <div className="max-w-md mx-auto p-6 bg-white rounded-lg mt-10">
       <h1 className="text-2xl font-bold mb-6">Log in to Go-Collective</h1>
       
       {/* Social login buttons */}
       <div className="flex space-x-4 mb-6">
+    
         <button
           className="flex-1 py-2 px-4 border border-gray-300 rounded-full flex items-center justify-center space-x-2 hover:bg-gray-50"
         >
@@ -84,7 +85,7 @@ const LoginPage = () => {
               Remember me
             </label>
           </div>
-          <a href="#" className="text-sm text-orange-500 hover:text-orange-600">
+          <a href="/forget-password" className="text-sm text-orange-500 hover:text-orange-600">
             Forgot password?
           </a>
         </div>
@@ -98,7 +99,7 @@ const LoginPage = () => {
       </form>
       
       <div className="mt-6 text-center text-sm text-gray-600">
-        Don't have an account? <a href="#" className="text-orange-500 hover:text-orange-600 font-medium">Create an account</a>
+        Don't have an account? <a href="/signup" className="text-orange-500 hover:text-orange-600 font-medium">Create an account</a>
       </div>
     </div>
   );
