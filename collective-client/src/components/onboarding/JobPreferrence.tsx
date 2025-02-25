@@ -53,7 +53,7 @@ const JobPreferences: React.FC = () => {
   );
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-6">
       <h2 className="text-2xl font-semibold mb-2">Job Preference</h2>
       <p className="text-gray-600 mb-8">
         Tailor your job search by selecting the types of projects and opportunities that suit you best.

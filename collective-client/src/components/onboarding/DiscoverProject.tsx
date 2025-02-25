@@ -25,7 +25,7 @@ const DiscoverProjects = () => {
   const [selectedCategory, setSelectedCategory] = useState('Writing & Translation');
   const [selectedSpecialties, setSelectedSpecialties] = useState(['Copywriting', 'Translation']);
 
-  const handleSpecialtyToggle = (specialty) => {
+  const handleSpecialtyToggle = (specialty: string) => {
     setSelectedSpecialties(prev => 
       prev.includes(specialty)
         ? prev.filter(s => s !== specialty)
@@ -54,17 +54,29 @@ const DiscoverProjects = () => {
           <h2 className="text-sm text-[#6B7280] mb-3">Select 1 category</h2>
           <div className="space-y-1">
             {categories.map((category) => (
-              <button
+              <label
                 key={category}
-                className={`w-full text-left px-4 py-2.5 rounded ${
+                className={`w-full flex items-center px-4 py-2.5 rounded cursor-pointer ${
                   selectedCategory === category
                     ? 'text-[#FF4405]'
                     : 'text-[#111827] hover:bg-gray-50'
                 }`}
-                onClick={() => setSelectedCategory(category)}
               >
+                <div className="relative mr-3 flex items-center justify-center">
+                  <input
+                    type="radio"
+                    name="category"
+                    value={category}
+                    checked={selectedCategory === category}
+                    onChange={() => setSelectedCategory(category)}
+                    className="appearance-none w-5 h-5 border border-gray-300 rounded-full checked:border-[#FF4405] checked:border-2"
+                  />
+                  {selectedCategory === category && (
+                    <div className="absolute w-2.5 h-2.5 bg-[#FF4405] rounded-full"></div>
+                  )}
+                </div>
                 {category}
-              </button>
+              </label>
             ))}
           </div>
         </div>
@@ -73,22 +85,29 @@ const DiscoverProjects = () => {
           <h2 className="text-sm text-[#6B7280] mb-3">Select 1 to 4 specialties</h2>
           <div className="space-y-1">
             {specialties.map((specialty) => (
-              <button
+              <label
                 key={specialty}
-                className={`w-full text-left px-4 py-2.5 rounded flex items-center justify-between ${
+                className={`w-full flex items-center px-4 py-2.5 rounded cursor-pointer ${
                   selectedSpecialties.includes(specialty)
                     ? 'text-[#FF4405]'
                     : 'text-[#111827] hover:bg-gray-50'
                 }`}
-                onClick={() => handleSpecialtyToggle(specialty)}
               >
+                <div className="relative mr-3 flex items-center justify-center">
+                  <input
+                    type="checkbox"
+                    name="specialty"
+                    value={specialty}
+                    checked={selectedSpecialties.includes(specialty)}
+                    onChange={() => handleSpecialtyToggle(specialty)}
+                    className="appearance-none w-5 h-5 border border-gray-300 rounded-full checked:border-[#FF4405] checked:border-2"
+                  />
+                  {selectedSpecialties.includes(specialty) && (
+                    <div className="absolute w-2.5 h-2.5 bg-[#FF4405] rounded-full"></div>
+                  )}
+                </div>
                 {specialty}
-                {selectedSpecialties.includes(specialty) && (
-                  <svg className="w-5 h-5 text-[#FF4405]" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                )}
-              </button>
+              </label>
             ))}
           </div>
         </div>

@@ -29,7 +29,7 @@ const SkillsSelection: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-6">
       <h2 className="text-2xl font-semibold mb-2">Showcase Your Expertise</h2>
       <p className="text-gray-600 mb-8">
         Help us recommend jobs for you, pick the skills that define your talent. 
@@ -71,7 +71,7 @@ const SkillsSelection: React.FC = () => {
         </div>
 
         <div>
-          <h3 className="text-lg font-medium mb-4">Need Inspiration?</h3>
+          <h3 className="text-lg font-semibold mb-4">Need Inspiration?</h3>
           <p className="text-gray-600 mb-4">Here are some popular skills on the platform right now</p>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
