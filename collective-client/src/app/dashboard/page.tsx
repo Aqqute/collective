@@ -1,3 +1,10 @@
+"use client";
+import { Header } from '@/components/header';
+import { ProfileProgress } from '@/components/dashboard/ProfileProgress';
+import { AvailableProjects } from '@/components/dashboard/AvaliableProject';
+import { BoostSection } from '@/components/dashboard/BoostSection';
+import { Footer } from '@/components/footer';
+
 export default function Home() {
     return (
       <main className="min-h-screen bg-gray-50">
@@ -10,6 +17,7 @@ export default function Home() {
           <AvailableProjects />
           <BoostSection />
         </div>
+        <Footer />
       </main>
     );
   }
