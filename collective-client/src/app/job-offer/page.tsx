@@ -1,9 +1,10 @@
+"use client";
 import { Check, X, Info, ExternalLink } from "lucide-react";
 import { useState, useCallback, useMemo } from "react";
 import { formatCurrency } from "../../../hooks/projectHook";
-import { Card, InfoItem, PartyProfile, SectionHeader } from "./UiComponent";
+import { Card, InfoItem, PartyProfile, SectionHeader } from "@/components/contracts/UiComponent";
 
-export const JobOfferPage: React.FC<any> = ({
+const JobOfferPage: React.FC<any> = ({
     contractDetails,
     onAccept,
     onDecline,
@@ -217,4 +218,4 @@ export const JobOfferPage: React.FC<any> = ({
     );
   };
   
-  
+  export default JobOfferPage;

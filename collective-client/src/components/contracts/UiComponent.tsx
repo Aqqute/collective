@@ -2,7 +2,7 @@ interface SectionHeaderProps {
     title: string;
   }
   
-  const SectionHeader: React.FC<SectionHeaderProps> = ({ title }) => (
+export const SectionHeader: React.FC<SectionHeaderProps> = ({ title }) => (
     <h2 className="text-xl font-semibold text-gray-900 mb-4">{title}</h2>
   );
   
@@ -13,7 +13,7 @@ interface SectionHeaderProps {
     icon?: React.ReactNode;
   }
   
-  const InfoItem: React.FC<InfoItemProps> = ({ 
+  export const InfoItem: React.FC<InfoItemProps> = ({ 
     label, 
     description, 
     value, 
@@ -49,7 +49,7 @@ interface SectionHeaderProps {
     }[];
   }
   
-  const InfoGrid: React.FC<InfoGridProps> = ({ columns, items }) => (
+export const InfoGrid: React.FC<InfoGridProps> = ({ columns, items }) => (
     <div className={`grid grid-cols-1 md:grid-cols-${columns} gap-4`}>
       {items.map((item, index) => (
         <div key={`grid-item-${index}`}>
@@ -62,21 +62,23 @@ interface SectionHeaderProps {
   
   interface CardProps {
     className?: string;
+    title?: string;
+    action?: any;
     children: React.ReactNode;
   }
   
-  const Card: React.FC<CardProps> = ({ className = '', children }) => (
+export const Card: React.FC<CardProps> = ({ className = '', children }) => (
     <div className={`bg-white rounded-lg border border-gray-200 p-6 ${className}`}>
       {children}
     </div>
   );
   
   interface PartyProfileProps {
-    party: ContractParty;
+    party: any;
     type: 'Client' | 'Freelancer';
   }
   
-  const PartyProfile: React.FC<PartyProfileProps> = ({ party, type }) => (
+export  const PartyProfile: React.FC<PartyProfileProps> = ({ party, type }) => (
     <div>
       <p className="text-sm text-gray-500 mb-2">{type}</p>
       <div className="flex items-center">

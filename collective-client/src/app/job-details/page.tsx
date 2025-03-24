@@ -1,7 +1,9 @@
+"use client";
 import { ProjectDetails } from "@/components/JobDetails";
 import { ProjectMetadata, Client, Review } from "@/types/Project";
-
-export const ProjectDetailsPage: React.FC<{ projectId: string }> = ({ projectId }) => {
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
+const ProjectDetailsPage: React.FC<{ projectId: string }> = ({ projectId }) => {
     // In a real application, these would be fetched from an API
     const project: ProjectMetadata = {
       id: "proj-123",
@@ -95,6 +97,10 @@ export const ProjectDetailsPage: React.FC<{ projectId: string }> = ({ projectId 
     ];
   
     return (
+      <div>
+        <Header />
+
+      
       <ProjectDetails
         project={project}
         client={client}
@@ -107,7 +113,11 @@ export const ProjectDetailsPage: React.FC<{ projectId: string }> = ({ projectId 
           console.log('Share modal triggered');
           // Modal open logic
         }}
+        
       />
+      <Footer />
+      </div>
     );
   };
-  
+
+export default ProjectDetailsPage;

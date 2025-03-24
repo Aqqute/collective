@@ -1,5 +1,9 @@
+"use client";
+import { ProjectApplicationPage } from "@/components/JobApplication/ProjectApplicationPage";
 import { useCallback } from "react";
-import { ProjectApplicationPage } from "./ProjectApplicationPage";
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
+
 
 // --- Connected Component Export ---
 interface ConnectedProjectApplicationProps {
@@ -35,12 +39,16 @@ interface ConnectedProjectApplicationProps {
     }, [onComplete]);
     
     return (
+        <div>
+        <Header />
       <ProjectApplicationPage
         projectId={projectId}
         projectDetails={projectDetails}
         onCancel={handleCancel}
         onSuccess={handleSuccess}
       />
+       <Footer />
+       </div>
     );
   };
   

@@ -1,7 +1,8 @@
 "use client";
 import { AvailableProjects } from '@/components/JobFeed/AvailableProject';
 import React, { useState, useEffect } from 'react';
-
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 export interface ProjectEntity {
     id: string;
     title: string;
@@ -80,6 +81,9 @@ export const ProjectsPage: React.FC = () => {
   };
 
   return (
+    <div>
+      <Header />
+   
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-8">Find Work</h1>
       
@@ -93,5 +97,9 @@ export const ProjectsPage: React.FC = () => {
       
       {/* Other sections can be added here */}
     </div>
+    <Footer />
+    </div>
   );
 };
+
+export default ProjectsPage;

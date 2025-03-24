@@ -15,7 +15,7 @@ interface ProjectCardProps {
   onSelect?: (id: string) => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) => {
+export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) => {
     const handleClick = useCallback(() => {
       if (onSelect) {
         onSelect(project.id);
@@ -23,6 +23,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) => {
     }, [project.id, onSelect]);
     
     return (
+      
+    
       <div className="border border-gray-200 rounded-lg p-4 mb-4 hover:shadow-md transition-shadow">
         <div className="flex justify-between items-start mb-2">
           <div>
@@ -58,6 +60,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onSelect }) => {
           </div>
         </div>
       </div>
+     
     );
   };
   

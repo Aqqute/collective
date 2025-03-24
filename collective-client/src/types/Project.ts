@@ -1,4 +1,5 @@
 export interface ProjectDetails {
+    id?: string;  
     title: string;
     createdAt: string;
     description: string;
@@ -8,6 +9,7 @@ export interface ProjectDetails {
     duration: string;
     workArrangement: string;
     support: string;
+    status?: string;
     projectScope: string;
     experienceLevel: string;
     location: string;
@@ -25,6 +27,7 @@ export interface ProjectDetails {
       role: string;
       avatar: string;
     };
+    user?: any;
     rating: number;
     date: string;
     comment: string;

@@ -1,6 +1,8 @@
+"use client";
 import { Project, ProjectsListing } from "@/components/contracts/ConnectedOffer";
 import { useCallback } from "react";
-
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 export const ProjectsContainer: React.FC = () => {
     // In a real-world scenario, this would come from an API call
     const sampleProjects: Project[] = [
@@ -45,12 +47,16 @@ export const ProjectsContainer: React.FC = () => {
     }, []);
     
     return (
+    <div>
+      <Header />
       <div className="max-w-3xl mx-auto py-8 px-4">
         <ProjectsListing 
           projects={sampleProjects} 
           onProjectSelect={handleProjectSelect}
         />
       </div>
+      <Footer />
+    </div>
     );
   };
   
