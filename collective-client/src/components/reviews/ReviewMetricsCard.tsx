@@ -1,18 +1,28 @@
+import { useMemo } from "react";
+import { ReviewMetrics, Card, ReviewUtils } from "./Utils";
 
 interface ReviewMetricsCardProps {
     metrics: ReviewMetrics;
   }
   
-  const ReviewMetricsCard: React.FC<ReviewMetricsCardProps> = ({ metrics }) => {
-    const ratingDistribution = useMemo(() => {
-      const maxValue = Math.max(...Object.values(metrics.ratingDistribution));
-      
-      return Object.entries(metrics.ratingDistribution).map(([rating, count]) => ({
-        rating: Number(rating),
-        count,
-        percentage: maxValue > 0 ? (count / maxValue) * 100 : 0
-      }));
-    }, [metrics.ratingDistribution]);
+export  const ReviewMetricsCard: React.FC<ReviewMetricsCardProps> = ({ metrics }) => {
+  const ratingDistribution = useMemo(() => {
+    if (!metrics) return [];
+    // Handle undefined ratingDistribution with a default empty object
+    const distribution = metrics.ratingDistribution || {};
+    const values = Object.values(distribution);
+    const maxValue = values.length > 0 ? Math.max(...values) : 0;
+  
+    return Object.entries(distribution).map(([rating, count]) => ({
+      rating: Number(rating),
+      count,
+      percentage: maxValue > 0 ? (count / maxValue) * 100 : 0
+    }));
+  }, [metrics]);
+
+  if (!metrics) {
+    return null; // or a loading indicator, or an error message
+  }
     
     return (
       <Card className="p-6">
@@ -20,9 +30,9 @@ interface ReviewMetricsCardProps {
           <div>
             <h3 className="text-lg font-medium text-gray-900 mb-1">Total Reviews</h3>
             <div className="flex items-center">
-              <span className="text-3xl font-bold">{metrics.totalReviews.toLocaleString()}</span>
+              <span className="text-3xl font-bold">{metrics.totalReviews.toLocaleString() || ''}</span>
               <span className="ml-2 px-2 py-1 text-xs rounded bg-green-100 text-green-800">
-                {metrics.growthPercentage}% ↑
+                {metrics.growthPercentage || ''}% ↑
               </span>
             </div>
             <p className="text-sm text-gray-500 mt-1">Growth in reviews this year</p>
@@ -31,9 +41,9 @@ interface ReviewMetricsCardProps {
           <div>
             <h3 className="text-lg font-medium text-gray-900 mb-1">Average Rating</h3>
             <div className="flex items-center">
-              <span className="text-3xl font-bold">{metrics.averageRating.toFixed(1)}</span>
+              <span className="text-3xl font-bold">{metrics.averageRating.toFixed(1) || ''} </span>
               <div className="flex ml-2">
-                {ReviewUtils.getRatingStars(Math.round(metrics.averageRating))}
+                {ReviewUtils.getRatingStars(Math.round(metrics.averageRating)) || ''}
               </div>
             </div>
             <p className="text-sm text-gray-500 mt-1">Average rating this year</p>

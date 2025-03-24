@@ -1,16 +1,15 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, JSX } from 'react';
 import { Star, ExternalLink, Share2, MessageCircle, RefreshCw, Link, Mail, Twitter, MessageSquare, Trash2 } from 'lucide-react';
 
-// ===== Type Definitions =====
 
-interface User {
+export interface User {
   id: string;
   name: string;
   avatarUrl: string;
   isCurrentUser?: boolean;
 }
 
-interface Review {
+export interface Review {
   id: string;
   userId: string;
   user: User;
@@ -20,7 +19,7 @@ interface Review {
   responses: ReviewResponse[];
 }
 
-interface ReviewResponse {
+export interface ReviewResponse {
   id: string;
   userId: string;
   user: User;
@@ -28,7 +27,7 @@ interface ReviewResponse {
   date: string;
 }
 
-interface ReviewMetrics {
+export interface ReviewMetrics {
   totalReviews: number;
   averageRating: number;
   growthPercentage: number;
@@ -37,7 +36,6 @@ interface ReviewMetrics {
   };
 }
 
-// ===== Utility Functions =====
 
 export const ReviewUtils = {
   formatDate: (dateString: string): string => {

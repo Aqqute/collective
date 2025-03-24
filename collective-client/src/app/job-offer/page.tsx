@@ -10,14 +10,20 @@ const JobOfferPage: React.FC<any> = ({
     onDecline,
     onViewDetails
   }) => {
-    const [isAccepting, setIsAccepting] = useState<boolean>(false);
-    const [isDeclining, setIsDeclining] = useState<boolean>(false);
-    const [actionError, setActionError] = useState<string | null>(null);
-    const [actionSuccess, setActionSuccess] = useState<string | null>(null);
+    if (!contractDetails) {
+    return <div className="max-w-4xl mx-auto p-4">Loading contract details...</div>;
+  }
+
+  const [isAccepting, setIsAccepting] = useState<boolean>(false);
+  const [isDeclining, setIsDeclining] = useState<boolean>(false);
+  const [actionError, setActionError] = useState<string | null>(null);
+  const [actionSuccess, setActionSuccess] = useState<string | null>(null);
+  
+  const formattedCurrency = useCallback((amount: number) => {
+    return formatCurrency(amount, contractDetails.currency);
+  }, [contractDetails.currency]);
     
-    const formattedCurrency = useCallback((amount: number) => {
-      return formatCurrency(amount, contractDetails.currency);
-    }, [contractDetails.currency]);
+
     
     const serviceFeeAmount = useMemo(() => {
       return (contractDetails.paymentAmount * contractDetails.serviceFeePercentage) / 100;

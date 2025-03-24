@@ -1,10 +1,13 @@
+import { Link, MessageSquare, Mail, Twitter, MessageCircle } from "lucide-react";
+import { useMemo, useCallback } from "react";
+import { Review, Avatar, ReviewUtils } from "./Utils";
 
 interface ShareReviewModalProps {
     review: Review;
     onClose: () => void;
   }
   
-  const ShareReviewModal: React.FC<ShareReviewModalProps> = ({ review, onClose }) => {
+  export const ShareReviewModal: React.FC<ShareReviewModalProps> = ({ review, onClose }) => {
     const shareOptions = useMemo(() => [
       { id: 'link', label: 'Link', icon: <Link className="w-5 h-5" /> },
       { id: 'message', label: 'Message', icon: <MessageSquare className="w-5 h-5" /> },
@@ -15,7 +18,7 @@ interface ShareReviewModalProps {
     ], []);
     
     const handleShare = useCallback((optionId: string) => {
-      // Implementation would depend on the sharing mechanism
+
       console.log(`Sharing review ${review.id} via ${optionId}`);
       onClose();
     }, [review.id, onClose]);

@@ -1,17 +1,17 @@
 import { Review } from "@/types/Project";
 import { MessageCircle, Share2, Trash2 } from "lucide-react";
 import { useCallback } from "react";
-import { Avatar, ReviewUtils, Button } from "./Utils";
+import { Avatar, ReviewUtils, Button, Card } from "./Utils";
 
 interface ReviewCardProps {
-    review: Review;
+    review: any;
     onRespond?: (reviewId: string) => void;
     onShare?: (reviewId: string) => void;
     onDelete?: (reviewId: string) => void;
     showActions?: boolean;
   }
   
-  const ReviewCard: React.FC<ReviewCardProps> = ({
+  export const ReviewCard: React.FC<ReviewCardProps> = ({
     review,
     onRespond,
     onShare,
